@@ -28,7 +28,7 @@ export default {
         }
       });
 
-      console.log('Permissions checked:', permissions, 'Result:', hasPermission);
+      // console.log('Permissions checked:', permissions, 'Result:', hasPermission);
       return hasPermission;
     }
   }

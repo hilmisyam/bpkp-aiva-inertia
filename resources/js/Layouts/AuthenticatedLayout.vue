@@ -35,7 +35,7 @@ const hasAnyPermission = Permissions.methods.hasAnyPermission;
 
                             <template v-if="hasAnyPermission(['permissions index'])">
                                 <NavLink :href="route('permissions.index')" :active="route().current('permissions*')">
-                                    Tes Permissions
+                                    Permissions
                                 </NavLink>
                             </template>
                         </div>

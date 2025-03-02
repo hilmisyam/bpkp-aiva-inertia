@@ -92,5 +92,6 @@ class PermissionController extends Controller implements HasMiddleware
 
         // render view
         return back();
+        // return to_route('permissions.index');
     }
 }
