@@ -9,12 +9,14 @@ Untuk mengisi database dengan data awal, Anda dapat menggunakan seeder yang tela
 
     ```bash
     php artisan migrate
+    ```
 
 2. **Jalankan seeder**:
     Gunakan perintah berikut untuk menjalankan seeder dan mengisi database dengan data awal.
 
     ```bash
-    php artisan db:seed
+    php artisan db:seed 
+    ```
 
     Perintah ini akan menjalankan DatabaseSeeder yang akan memanggil seeder lainnya seperti RolesTableSeeder, PermissionsTableSeeder, dan UserTableSeeder.
 
