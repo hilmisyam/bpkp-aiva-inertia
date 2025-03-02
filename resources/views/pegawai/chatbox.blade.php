@@ -5,27 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat Interface</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
     <style>
         .chat-container {
-            height: 80vh;
+            height: 60vh;
             overflow-y: scroll;
             border: 1px solid #ccc;
             padding: 20px;
             background-color: #f8f9fa;
+            border-radius: 10px;
+            margin-bottom: 20px;
         }
         .chat-input {
-            background-color: #d1d1d1;
-            border: none;
-            border-radius: 10px;
-            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            padding: 10px 20px;
             width: 100%;
+            margin-right: 10px;
         }
         .btn-send {
             background-color: #2e3192;
             color: #fff;
             border: none;
             padding: 10px 20px;
-            border-radius: 10px;
+            border-radius: 20px;
+            cursor: pointer;
         }
         .suggestion-btn {
             border: 1px solid #2e3192;
@@ -36,21 +41,34 @@
             background: none;
             cursor: pointer;
         }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .header img {
+            width: 120px;
+        }
+        .header span {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .header i {
+            font-size: 24px;
+            color: #2e3192;
+        }
     </style>
 </head>
 <body>
 <div class="container mt-4">
-    <div class="d-flex justify-content-between">
-        <img src="/logo.png" alt="BPKP Logo" width="120">
-        <div>
-            <span class="fw-bold">CHAT</span>
-        </div>
-        <div>
-            <i class="bi bi-person-circle" style="font-size: 24px;"></i>
-        </div>
+    <div class="header">
+        <img src="/logo.png" alt="BPKP Logo">
+        <span>CHAT</span>
+        <i class="bi bi-person-circle"></i>
     </div>
 
-    <div class="chat-container mt-4">
+    <div class="chat-container">
         <div class="text-center">
             <button class="suggestion-btn">Bagaimana prosedur mengajukan cuti?</button>
             <button class="suggestion-btn">Berapa sisa cuti yang saya miliki?</button>
@@ -58,9 +76,9 @@
         </div>
     </div>
 
-    <div class="mt-3 d-flex">
+    <div class="d-flex">
         <input type="text" class="chat-input" placeholder="Type your message...">
-        <button class="btn-send ms-2">Send</button>
+        <button class="btn-send">Send</button>
     </div>
 </div>
 

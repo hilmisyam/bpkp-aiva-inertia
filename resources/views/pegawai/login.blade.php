@@ -13,26 +13,60 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            margin: 0;
         }
         .login-box {
-            background: white;
-            padding: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 3rem;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            width: 400px;
-            text-align: center;
+            width: 100%;
+            max-width: 400px;
         }
         .login-box h2 {
             margin-bottom: 2rem;
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+        }
+        .login-box .form-label {
+            font-weight: bold;
+        }
+        .login-box .form-control {
+            margin-bottom: 1rem;
+            height: 50px;
+        }
+        .login-box .btn-primary {
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 1rem;
+            margin-top: 1rem;
         }
         .forgot-password {
             margin-top: 1rem;
+            text-align: center;
+        }
+        .forgot-password a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .forgot-password a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 <div class="login-box">
     <h2>Masuk</h2>
+    @if($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <form action="{{ route('login') }}" method="POST">
         @csrf
         <div class="mb-3">
@@ -41,11 +75,11 @@
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Kata Sandi</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="********" required>
+            <input type="password" class="form-control" id="password" name="password" placeholder="****" required>
         </div>
-        <button type="submit" class="btn btn-primary w-100">Masuk</button>
+        <button type="submit" class="btn btn-primary">Masuk</button>
         <div class="forgot-password">
-            <a href="{{ route('password.request') }}">Lupa Kata Sandi?</a>
+            <a>Lupa Kata Sandi?</a>
         </div>
     </form>
 </div>
