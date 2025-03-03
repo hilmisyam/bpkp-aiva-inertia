@@ -19,7 +19,7 @@ const form = useForm({
 
 // Handle submit form
 const handleStoreData = () => {
-  console.log('Form data:', form.name); // Debug data sebelum dikirim
+  // console.log('Form data:', form.name); // Debug data sebelum dikirim
   form.post(route('permissions.store'), {
     onSuccess: () => {
       Swal.fire({

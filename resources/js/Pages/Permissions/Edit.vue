@@ -51,7 +51,7 @@ const form = useForm({
 
 // Handle submit form
 const handleUpdateData = () => {
-  console.log('Form data:', form.name); // Debug data sebelum dikirim
+  // console.log('Form data:', form.name); // Debug data sebelum dikirim
   form.post(route('permissions.update', permission.id), {
     onSuccess: () => {
       Swal.fire({

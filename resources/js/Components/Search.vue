@@ -3,7 +3,7 @@
     <div class="relative">
       <input
         type="text"
-        v-model="data.search"
+        v-model="form.search"
         class="py-2 px-4 pr-11 block w-full rounded-lg text-sm border focus:outline-none focus:ring-0 focus:ring-gray-400 text-gray-700 bg-white border-gray-200 focus:border-gray-200"
         :placeholder="placeholder"
       />
@@ -15,7 +15,6 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
 import { useForm } from '@inertiajs/vue3';
 import { IconSearch } from '@tabler/icons-vue';
 
@@ -31,12 +30,12 @@ const props = defineProps({
 });
 
 // define use form inertia
-const { data, setData, get } = useForm({
+const form = useForm({
   search: ''
 });
 
 // define method searchData
 const handleSearchData = () => {
-  get(`${props.url}?search=${data.search}`);
+  form.get(`${props.url}?search=${form.search}`);
 };
 </script>

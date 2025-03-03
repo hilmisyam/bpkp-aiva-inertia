@@ -23,6 +23,7 @@
     "dependencies": {
         "@tabler/icons-vue": "^3.30.0",
         "clsx": "^2.1.1",
-        "sweetalert2": "^11.17.2"
+        "sweetalert2": "^11.17.2",
+        "vue-select": "^4.0.0-beta.6"
     }
 }

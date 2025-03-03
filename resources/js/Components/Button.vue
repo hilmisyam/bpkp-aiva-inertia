@@ -10,6 +10,9 @@ const props = defineProps({
   className: String,
 });
 
+// Emit event ke parent
+const emit = defineEmits(['deleted']);
+
 // Gunakan useForm() dengan cara yang benar
 const form = useForm();
 
@@ -35,6 +38,8 @@ const handleDeleteData = (url) => {
             showConfirmButton: false,
             timer: 1500
           });
+          form.reset(); // Reset form setelah penghapusan berhasil
+          emit('deleted'); // Emit event ke parent
         }
       });
     }

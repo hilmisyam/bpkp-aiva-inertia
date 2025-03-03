@@ -3,12 +3,14 @@
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">Permissions</h2>
     </template>
+
     <Head title="Permissions" />
     <Container>
       <div class="mb-4 flex items-center justify-between gap-4">
         <Button v-if="hasAnyPermission(['permissions create'])" type="add" :url="route('permissions.create')" />
         <div class="w-full md:w-4/6">
-          <Search :url="route('permissions.index')" placeholder="Search permissions data by name..." :filter="filters" />
+          <Search :url="route('permissions.index')" placeholder="Search permissions data by name..."
+            :filter="filters" />
         </div>
       </div>
       <TableCard title="Permissions">
@@ -26,8 +28,10 @@
               <TableTd>{{ permission.name }}</TableTd>
               <TableTd>
                 <div class="flex items-center gap-2">
-                  <Button v-if="hasAnyPermission(['permissions edit'])" type="edit" :url="route('permissions.edit', permission.id)" />
-                  <Button v-if="hasAnyPermission(['permissions delete'])" type="delete" :url="route('permissions.destroy', permission.id)" />
+                  <Button v-if="hasAnyPermission(['permissions edit'])" type="edit"
+                    :url="route('permissions.edit', permission.id)" />
+                  <Button v-if="hasAnyPermission(['permissions delete'])" type="delete"
+                    :url="route('permissions.destroy', permission.id)" @deleted="removePermission(permission.id)" />
                 </div>
               </TableTd>
             </tr>
@@ -43,6 +47,7 @@
 
 <script setup>
 import { Head, usePage } from '@inertiajs/vue3';
+import { ref, defineProps } from 'vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import Container from '@/Components/Container.vue';
 import Table from '@/Components/Table.vue';
@@ -63,10 +68,17 @@ const props = defineProps({
   }
 });
 
-// destruct permissions props
-const { permissions, filters } = usePage().props;
 
-// console.log('Permissions:', permissions.links);
+// destruct roles props
+const { permissions: initialRoles, filters } = usePage().props;
+
+// Reactive state for roles
+const permissions = ref(initialRoles);
+
+// Method to remove role from the list
+const removePermission = (id) => {
+  permissions.value.data = permissions.value.data.filter(permission => permission.id !== id);
+};
 
 const hasAnyPermission = Permissions.methods.hasAnyPermission;
 </script>
