@@ -22,6 +22,6 @@ Untuk mengisi database dengan data awal, Anda dapat menggunakan seeder yang tela
 
 ## Seeder yang tersedia
 
-- **RolesTableSeeder**: Seeder ini akan membuat data roles awal.
-- **PermissionsTableSeeder**: Seeder ini akan membuat data permissions awal.
-- **UserTableSeeder**: Seeder ini akan membuat data users awal dan mengaitkan roles serta permissions ke users tersebut.
+- **RolesTableSeeder**: Seeder ini akan membuat data roles awal. CRUD dapat diakses di /roles.
+- **PermissionsTableSeeder**: Seeder ini akan membuat data permissions awal. CRUD dapat diakses di /permissions.
+- **UserTableSeeder**: Seeder ini akan membuat data users awal dan mengaitkan roles serta permissions ke users tersebut. CRUD dapat diakses di /users.
