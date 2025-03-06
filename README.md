@@ -37,10 +37,17 @@ Untuk mengisi database dengan data awal, Anda dapat menggunakan seeder yang tela
 
 ## Dashboard Data
 
-Dashboard mengambil data dari backend melalui `DashboardController`. Data yang diambil meliputi Total Pegawai, Kehadiran Hari Ini, dan Sedang Cuti. 
+Dashboard mengambil data dari backend melalui `DashboardController`. Data yang diambil meliputi Total Pegawai, Kehadiran Hari Ini, Sedang Cuti, SP1, SP2 dan Grafik KPI. Untuk contoh nya bisa diakses di /dashboard.
 
 ### Data yang Diambil
 
 1. **Total Pegawai**: Jumlah total pegawai yang diambil dari view `v_employee_profiles`.
 2. **Kehadiran Hari Ini**: Jumlah pegawai yang hadir hari ini berdasarkan kolom `count` di baris yang memiliki `status` 1 dari view `v_today_attendance`.
 3. **Sedang Cuti**: Jumlah pegawai yang sedang cuti berdasarkan kolom `count` di baris yang memiliki `status` 3 dari view `v_today_attendance`.
+4. **SP1**: Jumlah SP1 yang dibuat pada bulan dan tahun saat ini dari tabel `hr.sp`.
+5. **SP2**: Jumlah SP2 yang dibuat pada bulan dan tahun saat ini dari tabel `hr.sp`.
+6. **Grafik KPI**: diambil dari table kpi.
+
+## Note:
+
+Setiap pull dari branch ini lakukan composer update dan npm update.
