@@ -46,4 +46,11 @@ class DashboardController extends Controller
             'kpiData' => $kpiData,
         ]);
     }
+
+    public function chatbot()
+    {
+        return inertia('Chatbot');
+    }
+
+
 }

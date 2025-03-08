@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { usePage, Link } from '@inertiajs/vue3';
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import Dropdown from '@/Components/Dropdown.vue';
@@ -14,6 +14,8 @@ const auth = computed(() => page.props.value?.auth || {});
 const user = computed(() => auth.value?.user || {});
 
 const hasAnyPermission = Permissions.methods.hasAnyPermission;
+
+
 </script>
 
 <template>
