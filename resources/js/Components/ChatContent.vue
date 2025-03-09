@@ -1,20 +1,21 @@
 <template>
   <div class="mt-4">
     <div class="chat-container">
-      <div class="text-center">
-        <button class="suggestion-btn" @click="fillInput('Bagaimana prosedur mengajukan cuti?')">Bagaimana prosedur mengajukan cuti?</button>
-        <button class="suggestion-btn" @click="fillInput('Berapa sisa cuti yang saya miliki?')">Berapa sisa cuti yang saya miliki?</button>
-        <button class="suggestion-btn" @click="fillInput('Berapa target KPI saya?')">Berapa target KPI saya?</button>
-      </div>
+     
       <div v-for="(msg, index) in messages" :key="index" class="message">
-        <p><strong>{{ msg.role }}:</strong> {{ msg.text }}</p>
+        <p><strong>{{ msg.role }}:</strong></p>
+        <p v-html="formatMessage(msg.text)"></p>
       </div>
       <div v-if="isLoading" class="loading-indicator">
         Loading...
       </div>
     </div>
-
-    <div class="d-flex">
+    <div class="text-center mb-4">
+        <button class="suggestion-btn" @click="fillInput('Bagaimana prosedur mengajukan cuti?')">Bagaimana prosedur mengajukan cuti?</button>
+        <button class="suggestion-btn" @click="fillInput('Berapa sisa cuti yang saya miliki?')">Berapa sisa cuti yang saya miliki?</button>
+        <button class="suggestion-btn" @click="fillInput('Berapa target KPI saya?')">Berapa target KPI saya?</button>
+    </div>
+    <div class="flex space-2">
       <input type="text" class="chat-input" v-model="message" placeholder="Type your message..." />
       <button class="btn-send" @click="sendMessage" :disabled="isLoading">Send</button>
     </div>
@@ -43,6 +44,14 @@ const isLoading = ref(false);
 const fillInput = (text) => {
   message.value = text;
 };
+
+const formatMessage = (text) => {
+  return text
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
+    .replace(/\*(.*?)\*/g, '<em>$1</em>') // Italic
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" class="text-blue-500 underline">$1</a>'); // Links
+};
+
 
 const sendMessage = async () => {
   if (message.value.trim() === '') return;
