@@ -32,12 +32,12 @@ const chartData = {
   datasets: [
     {
       label: 'Target',
-      backgroundColor: '#42A5F5',
+      backgroundColor: '#000000',
       data: targetValues
     },
     {
       label: 'Tercapai',
-      backgroundColor: '#66BB6A',
+      backgroundColor: '#777777',
       data: achievedValues
     }
   ]

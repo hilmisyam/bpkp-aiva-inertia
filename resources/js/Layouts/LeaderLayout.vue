@@ -1,10 +1,10 @@
 <template>
   <div class="flex flex-no-wrap">
     <Sidebar />
-    <div class="container mx-auto py-10 h-64 md:w-4/5 w-11/12 px-6">
-      
+    <div class="overflow-y-auto w-full">
+      <div class="container mx-auto py-10 h-64 w-11/12">
         <slot />
-      
+      </div>
     </div>
   </div>
 </template>
