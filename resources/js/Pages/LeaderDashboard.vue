@@ -164,12 +164,13 @@ onMounted(() => {
       </div>
     </div>
 
-    <div class="mt-8 border border-gray-900 rounded-lg shadow-sm p-6">
+    <div class="mt-8 mb-8 border border-gray-900 rounded-lg shadow-sm p-6">
       <h3 class="text-lg font-bold">Grafik KPI</h3>
       <div class="chart-container">
         <KpiChart :kpiData="kpiData" />
       </div>
     </div>
+    <div class="h-8"></div>
   </LeaderLayout>
 </template>
 

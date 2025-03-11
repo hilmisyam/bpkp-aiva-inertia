@@ -14,7 +14,7 @@ class DashboardController extends Controller
     public function index()
     {
         $totalPegawai = EmployeeProfile::count();
-        $kehadiranHariIni = TodayAttendance::where('status', 1)->sum('count');
+        $kehadiranHariIni = TodayAttendance::whereIn('status', [1, 2, 4, 5])->sum('count');
         $sedangCuti = TodayAttendance::where('status', 3)->sum('count');
 
         $currentMonth = Carbon::now()->month;

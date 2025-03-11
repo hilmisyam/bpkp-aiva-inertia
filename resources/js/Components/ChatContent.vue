@@ -1,19 +1,37 @@
 <template>
   <div class="mt-4">
     <div class="chat-container">
-     
-      <div v-for="(msg, index) in messages" :key="index" class="message">
-        <p><strong>{{ msg.role }}:</strong></p>
-        <p v-html="formatMessage(msg.text)"></p>
+      <div v-for="(msg, index) in messages" :key="index"
+        :class="{ 'text-right': msg.role === 'user', 'text-left': msg.role === 'baskara' }">
+        <div :class="{ 'bg-[#323B91] text-white': msg.role === 'user', 'bg-[#D93B47] text-white': msg.role === 'baskara' }"
+          class="inline-block rounded-lg p-2 mb-2 max-w-lg">
+          <p><strong>{{ msg.role }}:</strong></p>
+          <p v-html="formatMessage(msg.text)"></p>
+        </div>
       </div>
       <div v-if="isLoading" class="loading-indicator">
         Loading...
       </div>
     </div>
     <div class="text-center mb-4">
-        <button class="suggestion-btn" @click="fillInput('Bagaimana prosedur mengajukan cuti?')">Bagaimana prosedur mengajukan cuti?</button>
-        <button class="suggestion-btn" @click="fillInput('Berapa sisa cuti yang saya miliki?')">Berapa sisa cuti yang saya miliki?</button>
-        <button class="suggestion-btn" @click="fillInput('Berapa target KPI saya?')">Berapa target KPI saya?</button>
+      <template v-if="roleUser === 'pemimpin'">
+        <button class="suggestion-btn" @click="fillInput('Berapa pegawai yang terlambat datang hari ini?')">Berapa
+          pegawai yang terlambat datang hari ini?</button>
+        <button class="suggestion-btn"
+          @click="fillInput('Tampilkan 5 pegawai yang paling sering terlambat bulan ini?')">Tampilkan 5 pegawai yang
+          paling sering terlambat bulan ini?</button>
+        <button class="suggestion-btn" @click="fillInput('Tampilkan profil pegawai [Nama lengkap pegawai]')">Tampilkan
+          profil pegawai [Nama lengkap pegawai]</button>
+      </template>
+      <template v-else>
+        <button class="suggestion-btn" @click="fillInput('Bagaimana prosedur mengajukan cuti?')">Bagaimana prosedur
+          mengajukan cuti?</button>
+        <button class="suggestion-btn" @click="fillInput('Berapa sisa cuti saya tahun ini (ID [ID/NIP Anda])?')">Berapa
+          sisa cuti saya tahun ini (ID [ID/NIP Anda])?</button>
+        <button class="suggestion-btn"
+          @click="fillInput('Berapa kali saya (ID [ID/NIP Anda]) datang terlambat pada bulan ini?')">Berapa kali saya
+          (ID [ID/NIP Anda]) datang terlambat pada bulan ini?"</button>
+      </template>
     </div>
     <div class="flex space-2">
       <input type="text" class="chat-input" v-model="message" placeholder="Type your message..." />
@@ -49,7 +67,8 @@ const formatMessage = (text) => {
   return text
     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
     .replace(/\*(.*?)\*/g, '<em>$1</em>') // Italic
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" class="text-blue-500 underline">$1</a>'); // Links
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" class="text-blue-500 underline">$1</a>') // Links
+    .replace(/\n/g, '<br>'); // Line breaks
 };
 
 
@@ -99,6 +118,7 @@ const sendMessage = async () => {
   border-radius: 10px;
   margin-bottom: 20px;
 }
+
 .chat-input {
   background-color: #fff;
   border: 1px solid #ccc;
@@ -107,6 +127,7 @@ const sendMessage = async () => {
   width: 100%;
   margin-right: 10px;
 }
+
 .btn-send {
   background-color: #2e3192;
   color: #fff;
@@ -115,10 +136,12 @@ const sendMessage = async () => {
   border-radius: 20px;
   cursor: pointer;
 }
+
 .btn-send:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
+
 .suggestion-btn {
   border: 1px solid #2e3192;
   border-radius: 20px;
@@ -128,26 +151,32 @@ const sendMessage = async () => {
   background: none;
   cursor: pointer;
 }
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
 }
+
 .header img {
   width: 120px;
 }
+
 .header span {
   font-size: 18px;
   font-weight: bold;
 }
+
 .header i {
   font-size: 24px;
   color: #2e3192;
 }
+
 .message {
   margin-bottom: 10px;
 }
+
 .loading-indicator {
   text-align: center;
   margin-top: 10px;

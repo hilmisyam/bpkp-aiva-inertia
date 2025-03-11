@@ -36,7 +36,7 @@ const submit = () => {
         <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
             {{ status }}
         </div>
-        <h1 class="text-lg text-center mb-4 font-medium text-gray-900">Masuk</h1>
+        <h1 class="text-2xl text-center mb-8 font-medium text-gray-900">Masuk</h1>
         <form @submit.prevent="submit">
             <div>
                 <InputLabel for="email" value="Email" />
